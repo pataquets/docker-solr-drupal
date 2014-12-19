@@ -15,5 +15,5 @@ RUN \
 	rm -rf /var/lib/apt/lists/
 
 RUN \
-	git clone --single-branch --branch 7.x-1.7 git://git.drupal.org/project/apachesolr.git ;
+	git clone --single-branch --branch 7.x-1.7 git://git.drupal.org/project/apachesolr.git && \
 	cp -v apachesolr/solr-conf/solr-4.x/* solr/collection1/conf/
