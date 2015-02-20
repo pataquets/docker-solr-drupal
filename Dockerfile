@@ -1,12 +1,9 @@
 FROM pataquets/solr:latest
 
 RUN \
+	apt-key adv --keyserver hkp://hkps.pool.sks-keyservers.net --recv-keys E1DF1F24 && \
 	echo "deb http://ppa.launchpad.net/git-core/ppa/ubuntu $(lsb_release -cs) main" \
 		| tee /etc/apt/sources.list.d/git.list && \
-	DEBIAN_FRONTEND=noniteractive \
-	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E1DF1F24
-
-RUN \
 	apt-get update && \
 	DEBIAN_FRONTEND=noninteractive \
 		apt-get -y --no-install-recommends install git-core \
