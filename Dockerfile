@@ -2,8 +2,10 @@ FROM pataquets/solr:latest
 
 RUN \
   apt-key adv --keyserver hkp://hkps.pool.sks-keyservers.net --recv-keys E1DF1F24 && \
-  echo "deb http://ppa.launchpad.net/git-core/ppa/ubuntu $(lsb_release -cs) main" \
-    | tee /etc/apt/sources.list.d/git.list && \
+  . /etc/lsb-release && \
+  echo "deb http://ppa.launchpad.net/git-core/ppa/ubuntu ${DISTRIB_CODENAME} main" \
+    | tee /etc/apt/sources.list.d/git.list \
+  && \
   apt-get update && \
   DEBIAN_FRONTEND=noninteractive \
     apt-get -y --no-install-recommends install git-core \
